@@ -5,19 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Awesome-books</title>
+    <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <h1>Awesome Books</h1>
-    <section id="books">
-      <!-- This contant belongs to Java-script -->
-      
-    </section>
-    <br>
-    <form>
+    <h1>All Awesome Books</h1>
+    <div id="books-list">
+      <ul id="books">
+        <!-- This contant belongs to Java-script -->
+      </ul>
+    </div>
+    <h2 class="addbook">Add a new book</h2>
+    <div class="book-form">
+    <form class="list">
       <input type="text" placeholder="title" id="title" required/> <br> <br>
       <input type="text" placeholder="author" id="author" required/> <br> <br>
-      <button id="add-btn">Add</button>
+      <button type="submit" id="add-btn">Add</button>
     </form>
+  </div>
     <script src="index.js"></script>
   </body>
 </html>
