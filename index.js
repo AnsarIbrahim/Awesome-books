@@ -31,7 +31,7 @@ class Book {
       const h3 = document.createElement('h3');
       const removeBtn = document.createElement('button');
       h3.textContent = `${book.title} by ${book.author}`;
-      removeBtn.textContent = 'Remove';
+      removeBtn.textContent = `Remove`;
       removeBtn.addEventListener('click', () => this.removeBook(index));
       li.classList.add('book-item');
       li.appendChild(h3);
@@ -44,3 +44,19 @@ class Book {
 const bookCollect = new Book();
 document.getElementById('add-btn').addEventListener('click', bookCollect.addBook);
 bookCollect.displayBooks();
+
+const links = document.querySelectorAll('nav a');
+const secTion = document.querySelectorAll('section');
+
+links.forEach((link) => {
+  link.addEventListener('click', () => {
+    links.forEach((link) => link.classList.remove('active'));
+    link.classList.add('active');
+    secTion.forEach((section) => section.style.display = 'none');
+
+    const sectionId = link.getAttribute('href').slice(1);
+    document.getElementById(sectionId).style.display = 'block';
+  });
+});
+
+links[0].click();

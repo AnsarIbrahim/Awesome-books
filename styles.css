@@ -4,11 +4,28 @@
   box-sizing: border-box;
 }
 
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(40, 117, 141);
+  padding: 0 5%;
+}
+
+nav > a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+nav > a:hover {
+  color: #000;
+}
+
 h1 {
   padding: 1rem;
   text-align: center;
   color: #fff;
-  background-color: rgb(40, 117, 141);
 }
 
 .book-form {
@@ -96,4 +113,51 @@ li:hover {
 li.selected {
   background-color: rgb(40, 117, 141);
   color: #fff;
+}
+
+.contact {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  height: 70vh;
+}
+
+.cont-sec {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+}
+
+.cont-sec > h2 {
+  font-size: 50px;
+  color: rgb(40, 117, 141);
+  padding: 50px;
+}
+
+.cont-sec > p {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 20px;
+  padding: 20px;
+}
+
+.cont-sec > li {
+  text-align: justify;
+  padding: 5px;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+footer {
+  display: flex;
+  border: 5px solid #000;
+  border-radius: 8px;
+  width: 90%;
+  position: absolute;
+  margin-left: 5%;
+  padding: 20px;
+  bottom: 0;
 }
