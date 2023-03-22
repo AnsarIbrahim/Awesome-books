@@ -31,7 +31,7 @@ class Book {
       const h3 = document.createElement('h3');
       const removeBtn = document.createElement('button');
       h3.textContent = `${book.title} by ${book.author}`;
-      removeBtn.textContent = 'Remove';
+      removeBtn.textContent = `Remove`;
       removeBtn.addEventListener('click', () => this.removeBook(index));
       li.classList.add('book-item');
       li.appendChild(h3);
