@@ -161,3 +161,15 @@ footer {
   padding: 20px;
   bottom: 0;
 }
+
+section {
+  display: none;
+}
+
+section:target {
+  display: block;
+}
+
+section:not(:target) {
+  display: none;
+}
