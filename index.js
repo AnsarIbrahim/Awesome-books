@@ -1,61 +1,75 @@
 class Book {
   constructor() {
-    this.books = JSON.parse(localStorage.getItem('books')) || [];
+    this.booksParent = document.getElementById("table-row");
+    this.titleInput = document.getElementById("title");
+    this.authorInput = document.getElementById("author");
+    this.books = JSON.parse(localStorage.getItem("books")) || [];
     this.addBook = this.addBook.bind(this);
-    this.removeBook = this.removeBook.bind(this);
-  }
-
-  addBook() {
-    const title = document.getElementById('title').value;
-    const author = document.getElementById('author').value;
-    if (title && author) {
-      this.books.push({ title, author });
-      localStorage.setItem('books', JSON.stringify(this.books));
-      this.displayBooks();
-      document.getElementById('title').value = '';
-      document.getElementById('author').value = '';
-    }
-  }
-
-  removeBook(index) {
-    this.books.splice(index, 1);
-    localStorage.setItem('books', JSON.stringify(this.books));
+    this.deleteBook = this.deleteBook.bind(this);
     this.displayBooks();
   }
 
+  addBook(e) {
+    e.preventDefault();
+    const title = this.titleInput.value;
+    const author = this.authorInput.value;
+    if (title && author) {
+      const newBook = { title, author };
+      this.books.push(newBook);
+      localStorage.setItem("books", JSON.stringify(this.books));
+      this.titleInput.value = "";
+      this.authorInput.value = "";
+      this.bookElement(newBook, this.books.length - 1);
+    }
+  }
+
+  bookElement(book, index) {
+    const bookContainer = document.createElement("td");
+    if (index % 2 === 0) {
+      bookContainer.classList.add("dark");
+    }
+
+    const removeButton = document.createElement("button");
+    removeButton.setAttribute("class", "btn  btn-sm btn-danger");
+    removeButton.textContent = "Remove";
+
+    removeButton.addEventListener("click", () => {
+      this.deleteBook(index);
+    });
+    bookContainer.append(`"${book.title}" by ${book.author}`, removeButton);
+    this.booksParent.appendChild(bookContainer);
+    bookContainer.scrollIntoView({ behavior: "smooth" });
+  }
+
   displayBooks() {
-    const bookList = document.getElementById('books');
-    bookList.innerHTML = '';
+    this.booksParent.innerHTML = "";
     this.books.forEach((book, index) => {
-      const li = document.createElement('li');
-      const h3 = document.createElement('h3');
-      const removeBtn = document.createElement('button');
-      h3.textContent = `${book.title} by ${book.author}`;
-      removeBtn.textContent = `Remove`;
-      removeBtn.addEventListener('click', () => this.removeBook(index));
-      li.classList.add('book-item');
-      li.appendChild(h3);
-      li.appendChild(removeBtn);
-      bookList.appendChild(li);
+      this.bookElement(book, index);
     });
   }
+
+  deleteBook(index) {
+    this.books.splice(index, 1);
+    localStorage.setItem("books", JSON.stringify(this.books));
+    this.displayBooks();
+  }
 }
+const booksForm = document.getElementById("bookForm");
 
-const bookCollect = new Book();
-document.getElementById('add-btn').addEventListener('click', bookCollect.addBook);
-bookCollect.displayBooks();
+const storeBook = new Book();
+booksForm.addEventListener("submit", storeBook.addBook);
+storeBook.displayBooks();
 
-const links = document.querySelectorAll('nav a');
-const secTion = document.querySelectorAll('section');
+const links = document.querySelectorAll("nav a");
+const section = document.querySelectorAll("section");
 
 links.forEach((link) => {
-  link.addEventListener('click', () => {
-    links.forEach((link) => link.classList.remove('active'));
-    link.classList.add('active');
-    secTion.forEach((section) => section.style.display = 'none');
+  link.addEventListener("click", () => {
+    link.classList.add("active");
+    section.forEach((section) => (section.style.display = "none"));
 
-    const sectionId = link.getAttribute('href').slice(1);
-    document.getElementById(sectionId).style.display = 'block';
+    const sectionId = link.getAttribute("href").slice(1);
+    document.getElementById(sectionId).style.display = "block";
   });
 });
 
