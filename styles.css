@@ -76,6 +76,14 @@ form#bookForm {
   color: aqua;
 }
 
+iframe {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2% auto;
+  border-radius: 20px;
+}
+
 @media only screen and (max-width: 1400px) {
   .span-para {
     margin-right: 17%;
