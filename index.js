@@ -73,4 +73,4 @@ links.forEach((link) => {
   });
 });
 
-links[0].click();
+links[2].click();
