@@ -68,12 +68,8 @@ form#bookForm {
 }
 
 .header {
-  width: 95%;
+  width: 100%;
   margin: auto;
-}
-
-.a-nav:hover {
-  color: aqua;
 }
 
 iframe {
