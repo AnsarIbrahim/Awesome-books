@@ -68,12 +68,16 @@ form#bookForm {
 }
 
 .header {
-  width: 95%;
+  width: 100%;
   margin: auto;
 }
 
-.a-nav:hover {
-  color: aqua;
+iframe {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2% auto;
+  border-radius: 20px;
 }
 
 @media only screen and (max-width: 1400px) {
